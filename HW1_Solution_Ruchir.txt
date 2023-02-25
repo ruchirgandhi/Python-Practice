@@ -1,0 +1,53 @@
+
+###################
+HW1 PART_1_Solution
+###################
+
+Places in sorted manner [(50, 'Austin'), (75, 'Dallas'), (100, 'San Antonio'), (200, 'Houston')]
+
+
+The closest place from origin is Austin, with disatnce of 50 miles
+
+
+###################
+HW1 PART_2_Solution
+###################
+Please Enter a Temperature in Fahrenheit: 101
+Temprature in Celsius is: 38
+
+Process finished with exit code 0
+
+
+Please Enter a Temperature in Fahrenheit: 99
+Temprature in Celsius is: 37
+
+Process finished with exit code 0
+
+
+###################
+HW1 PART_3_Solution
+###################
+
+
+Please Enter Your Name:Ruchir Gandhi
+Your entered name is Ruchir Gandhi and number of characters of name are 13
+Please Enter Your Name:Rian Gandhi
+Your entered name is Rian Gandhi and number of characters of name are 11
+Please Enter Your Name:Python_416
+Your entered name is Python_416 and number of characters of name are 10
+Please Enter Your Name:
+
+ Please Enter Something, You can't leave it blank
+Please Enter Your Name:
+
+ Please Enter Something, You can't leave it blank
+Please Enter Your Name:Q
+
+Process finished with exit code 0
+
+Please Enter Your Name:q
+
+Process finished with exit code 0
+
+
+

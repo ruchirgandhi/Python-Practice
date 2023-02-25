@@ -1,0 +1,566 @@
+1. find max number of occurances from list or string:
+
+use collections import Counter
+
+use Counter(list).most_common(1)
+and to tell which number is repeating most k = max(list,key=list.count)
+
+
+
+2. LIST: find all zero and move them to end in a list
+
+>>> count = list.count(0)
+>>> count
+
+>>> 
+>>> for i in list:
+...     list.remove(0)
+...     list.append(0)
+... 
+>>> list
+[1, 2, 3, 5, 6, 7, 0, 0, 0]
+>>> 
+
+
+
+2.a arr: find all zeros and move them to end in a array
+
+arr {1,2,3,0,0,0,4,5,6}
+
+n = len(arr)
+
+count = 0
+
+for i in range(n):
+	if arr[i] != 0:
+		arr[count] = arr[i]
+		count +=1
+	while count <n:
+		arr[count] =0
+		count +=1
+
+
+3. merge 2 lists and sort it
+
+list = list1 + list2
+
+list.sort()
+
+4. 
+
+there are 
+
+Input: logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+Output: ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
+
+
+
+You have an array of logs.  Each log is a space delimited string of words.
+
+For each log, the first word in each log is an alphanumeric identifier.  Then, either:
+
+Each word after the identifier will consist only of lowercase letters, or;
+Each word after the identifier will consist only of digits.
+We will call these two varieties of logs letter-logs and digit-logs.  It is guaranteed that each log has at least one word after its identifier.
+
+
+
+====LOGIC===
+
+
+find last element of list and see if its a digit if isdigit
+
+
+
+
+ def reorderLogFiles(self, logs):
+        """
+        :type logs: List[str]
+        :rtype: List[str]
+        """
+        letter_list = []
+        number_list = []
+        for i in logs:
+            if i.split()[-1].isdigit():
+                number_list.append(i)
+            else:
+                letter_list.append(i)                      
+        return sorted(letter_list, key=self.helper) + number_list
+        
+    def helper(self, element):
+        a = element.split(' ')
+        return a[1::] + list(a[0])
+
+
+5. 
+
+
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+
+=====
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+=====
+
+List = [2,7,9,11]
+
+class Solution:
+    def twoSum(nums, target):
+        d={}
+        for i,num in enumerate(nums):
+            if target - num in d:
+                    return d[target-num],i
+            d[num] = i
+
+
+
+=====
+6. 
+
+Given a paragraph and a list of banned words, return the most frequent word that is not in the list of banned words.  It is guaranteed there is at least one word that isn't banned, and that the answer is unique.
+
+Words in the list of banned words are given in lowercase, and free of punctuation.  Words in the paragraph are not case sensitive.  The answer is in lowercase.
+
+Example:
+
+Input: 
+paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+banned = ["hit"]
+Output: "ball"
+Explanation: 
+"hit" occurs 3 times, but it is a banned word.
+"ball" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph. 
+Note that words in the paragraph are not case sensitive,
+that punctuation is ignored (even if adjacent to words, such as "ball,"), 
+and that "hit" isn't the answer even though it occurs more because it is banned.
+ 
+
+
+=====
+from collections import Counter
+import re
+
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        
+        paragraph = paragraph.lower()
+        paragraph = re.split(r"[,.]",paragraph)
+        paragraph = ''.join(paragraph)
+        paragraph = paragraph.split()
+        ans = Counter(paragraph).most_common(2)
+        for i, j in ans:
+            if i not in banned:
+                return i
+
+
+
+7.==== TOP K frequent words ====
+
+Given a non-empty list of words, return the k most frequent elements.
+
+Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.
+
+Example 1:
+Input: ["i", "love", "leetcode", "i", "love", "coding"], k = 2
+Output: ["i", "love"]
+Explanation: "i" and "love" are the two most frequent words.
+    Note that "i" comes before "love" due to a lower alphabetical order.
+Example 2:
+Input: ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], k = 4
+Output: ["the", "is", "sunny", "day"]
+Explanation: "the", "is", "sunny" and "day" are the four most frequent words,
+    with the number of occurrence being 4, 3, 2 and 1 respectively.
+
+
+
+
+
+
+
+==
+
+from collections import *
+
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        words.sort()
+        ans = Counter(words).most_common(k)
+        list = []
+        for i, j in ans:
+            list.append(i)
+            
+            print("The letter with most occurances is {} and its occurance is {}".format(i,j))
+        return list
+
+
+
+8.
+
+===
+
+Given an integer array, find three numbers whose product is maximum and output the maximum product.
+
+Example 1:
+
+Input: [1,2,3]
+Output: 6
+ 
+
+Example 2:
+
+Input: [1,2,3,4]
+Output: 24
+
+==
+
+
+class Solution:
+    def maximumProduct(self, nums: List[int]) -> int:
+        nums.sort()
+        return max(nums[-1] * nums[-2] * nums[-3], nums[-1] * nums[0] * nums[1])
+   
+
+
+
+9.
+
+====
+
+Python program to find second largest number in a list
+Given a list of numbers, the task is to write a Python program to find the second largest number in given list.
+
+Examples:
+
+Input : list1 = [10, 20, 4]
+Output : 10
+
+Input : list2 = [70, 11, 20, 4, 100]
+Output : 70
+
+==
+
+
+Method 2 : Sort the list in ascending order and print the second last element in the list.
+
+filter_none
+edit
+play_arrow
+
+brightness_4
+# Python program to find largest 
+# number in a list 
+  
+# list of numbers 
+list1 = [10, 20, 4, 45, 99] 
+  
+# sorting the list 
+list1.sort() 
+  
+# printing the second last element 
+print("Second largest element is:", list1[-2])  
+
+
+
+10.
+
+=====
+
+find second largest value from an array, take care of redundant values
+
+====
+
+my_list = 1,2,3,4,5,5,6,6]
+
+new_list = list(set(my_list))
+new_list.sort()
+print(new_liest[-2])
+
+
+
+11.
+
+===
+
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Example 1:
+
+Input: [2,2,1]
+Output: 1
+Example 2:
+
+Input: [4,1,2,1,2]
+Output: 4
+
+=======
+
+
+>>> my_list = [1,2,3,1,2,3,4]
+>>> new = Counter(my_list).most_common()
+>>> new
+[(1, 2), (2, 2), (3, 2), (4, 1)]
+>>> for i,j in new:
+...     if j == 1:
+...             print("the number which doesnt not repeat is {}".format(i))
+... 
+the number which doesnt not repeat is 4
+>>> 
+
+
+
+
+12.
+
+======
+
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+Follow up:
+
+Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+Example 2:
+
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+
+
+
+====
+
+
+k=3
+
+>>> list = [1,2,3,4,5,6,7]
+>>> k = 3
+>>> list[:] = list[-k:] + list[:-k]
+>>> list
+[5, 6, 7, 1, 2, 3, 4]
+
+
+
+
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+print(thislist[-3:] + thislist[:-3])
+
+
+13.
+===
+
+
+20. Valid Parentheses
+
+
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+Example 1:
+
+Input: "()"
+Output: true
+Example 2:
+
+Input: "()[]{}"
+Output: true
+Example 3:
+
+Input: "(]"
+Output: false
+Example 4:
+
+Input: "([)]"
+Output: fals
+
+
+===
+
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stack = []
+        left_set = {'(','{','['}
+        right_set = {')','}',']'}
+        mapping = {
+            ')':'(',
+            '}':'{',
+            ']':'['
+        }
+        for each in s:
+            if each in left_set:
+                stack.append(each)
+            elif each in right_set:
+                try:
+                    pop_out = stack.pop()
+                except:
+                    return False
+                if mapping[each] ==  pop_out:
+                    continue
+                else:
+                    return False
+        if len(stack) > 0:
+            return False
+        return True
+
+
+
+14.
+
+=====
+7. Reverse Integer
+
+Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+
+Input: 123
+Output: 321
+Example 2:
+
+Input: -123
+Output: -321
+Example 3:
+
+Input: 120
+Output: 2
+
+
+
+
+
+
+class Solution:    
+    def reverse(self,x):
+        s= str(abs(x))
+        r = s[::-1]
+        reversed = int(r)
+             
+        if reversed > 2**32: 
+            return 0
+        elif x>0:
+            return reversed 
+        else:
+            return -1* reversed
+            
+
+
+
+####
+
+
+206. Reverse Linked List
+
+
+Reverse a singly linked list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+
+
+must watch:
+
+https://www.youtube.com/watch?v=XDO6I8jxHtA
+
+###### 
+
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        prev = None
+        while head:
+            temp = head
+            head = head.next
+            temp.next = prev
+            prev = temp
+        return prev
+
+
+
+=======
+
+
+Defaultdict is a container like dictionaries present in the module collections. Defaultdict is a sub-class of the dict class that returns a dictionary-like object. The functionality of both dictionaries and defualtdict are almost same except for the fact that defualtdict never raises a KeyError. It provides a default value for the key that does not exists.
+
+from collections import defaultdict 
+   
+   
+# Defining the dict 
+d = defaultdict(int) 
+   
+L = [1, 2, 3, 4, 2, 4, 1, 2] 
+   
+# Iterate through the list 
+# for keeping the count 
+for i in L: 
+       
+    # The default value is 0 
+    # so there is no need to  
+    # enter the key first 
+    d[i] += 1
+       
+print(d) 
+
+Output:
+
+defaultdict(<class 'int'>, {1: 2, 2: 3, 3: 1, 4: 2})
+
+====PROPER SOLUTION====
+#Defaultdict is a container like dictionaries present in the module collections.
+# Defaultdict is a sub-class of the dict class that returns a dictionary-like object.
+# The functionality of both dictionaries and defualtdict are almost same except for the fact that defualtdict never raises a KeyError.
+# It provides a default value for the key that does not exists.
+
+
+
+
+from collections import defaultdict
+
+L = [1,2,3,4,5,6,3,3,1,2,3,4,2,1,4,5]
+
+d = defaultdict(int)
+
+for i in L:
+    d[i] += 1
+
+print(dict(d))
+
+for k,v in d.items():
+    print(k,v)
+
+=====

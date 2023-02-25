@@ -1,0 +1,16 @@
+git --version
+git init
+git add about.py
+git status
+git commit -m "committed revision one"
+git log
+git checkout home.py  """ it will replace modified file with original file which was comm		 ited in git"""
+
+git reset HEAD home.py
+git rm home.py
+git add --all  """ move everything to staging, incl deletion""" 
+
+git branch
+
+git checkout master
+
